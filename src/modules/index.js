@@ -1175,7 +1175,7 @@ router
     *     security:
     *       - token: []
     *     parameters:
-    *        - in: header
+    *       - in: header
     *          name: token
     *          required: true
     *          schema:
@@ -1283,7 +1283,7 @@ router
     *     security:
     *       - token: []
     *     parameters:
-    *        - in: header
+    *       - in: header
     *          name: token
     *          required: true
     *          schema:

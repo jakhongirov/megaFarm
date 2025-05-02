@@ -10,7 +10,7 @@ CREATE TABLE users (
    name text,
    phone_number text,
    code text,
-   balance bigint,
+   balance bigint DEFAULT 0,
    qrcode_image text,
    qrcode_image_url text,
    chat_id bigint,
