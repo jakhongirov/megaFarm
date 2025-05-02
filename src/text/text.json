@@ -1,0 +1,60 @@
+{
+	"startText": "🇺🇿: Assalomu alaykum, iltimos bot tilni tanlang.\n\n🇷🇺: Здравствуйте, пожалуйста, выберите язык.",
+
+	"startTextUz": "Ro’yxatdan o’tish uchun iltimos, kontaktingizni yuboring:",
+	"startTextRu": "Пожалуйста, отправьте свой контакт для регистрации.",
+
+	"sendContactBtnUz": "👤 Kontakt yuborish",
+	"sendContactBtnRu": "📞 Отправить",
+
+	"askNameTextUz": "Ajoyib! Davom etish uchun Ism va Familyangizni yozing:",
+	"askNameTextRu": "Отлично! Чтобы продолжить, напишите своё имя и фамилию.",
+
+	"successfullyRegisterUz": "Iltimos, aksiya shartlarini bilan tanishib chiqing va tasdiqlang:",
+	"successfullyRegisterRu": "Пожалуйста, ознакомьтесь с условиями акции и подтвердите их.",
+
+	"seeConditionsBtnUz": "Shartlarni ko’rish ->",
+	"seeConditionsBtnRu": "Посмотреть условия ->",
+
+	"agreeConditionsBtnUz": "Shartlarga roziman ✅",
+	"agreeConditionsBtnRu": "Согласен с условиями ✅",
+
+	"menuTextUz": "Asosiy menyuga hush kelibsiz!\n\nPastdagi tugmalar orqali bot imkoniyatlaridan foydalanishingiz mumkin",
+	"menuTextRu": "Добро пожаловать в главное меню!\n\nВы можете воспользоваться возможностями бота с помощью кнопок ниже.",
+
+	"balanceBtnUz": "💳 QR kod va balans",
+	"balanceBtnRu": "💳 QR-код и баланс",
+
+	"historiesBtnUz": "🕔 Xaridlar tarixi",
+	"historiesBtnRu": "🕔 История покупок",
+
+	"addressBtnUz": "🗺️ Manzillar",
+	"addressBtnRu": "🗺️ Адреса",
+
+	"nearAddressBtnUz": "📍 Yaqin dorixona",
+	"nearAddressBtnRu": "📍 Ближайшая аптека",
+
+	"balanceTextUz": "Balans: <b>%balance% so’m</b>",
+	"balanceTextRu": "Баланс: <b>%balance% сум</b>",
+
+	"historiesListTextUz": "Sizning MegaFarmdagi xaridlar tarixingiz ro’yxati",
+	"historiesListTextRu": "“Ваш список истории покупок в MegaFarm",
+
+	"previousBtnUz": "← Oldingi",
+	"previousBtnRu": "← Предыдущий",
+
+	"nextBtnUz": "Keyingisi →",
+	"nextBtnRu": "Следующий →",
+
+	"addressTextUz": "<b>%name%</b>\n📞 Telefon: %phone_number%\n<b>⏰ Ish vaqti:</b> %schedule%\n<b>📍 Manzil:</b> %address%\n<b>Mo'ljal:</b> %landmark%\n\n%map%",
+	"addressTextRu": "<b>%name%</b>\n📞 Телефон: %phone_number%\n<b>⏰ Время работы:</b> %schedule%\n<b>📍 Адрес:</b> %address%\n<b>nОриентир:</b> %landmark%\n\n%map%",
+
+	"nearAddressTextUz": "Sizga eng yaqin dorixonani topish uchun, iltimos, bizga joylashuvingizni yuboring",
+	"nearAddressTextRu": "Чтобы найти ближайшую к вам аптеку, пожалуйста, отправьте нам своё местоположение.",
+
+	"sendLocationBtnUz": "📍 Manzilni yuborish",
+	"sendLocationBtnRu": "📍 Отправить местоположение",
+
+	"historiesTextUz": "<b>%date% - %amount% so'm\nFilial: %name%</b>",
+	"historiesTextRu": "<b>%date% - %amount% сум\nФилиал: %name%</b>"
+}
