@@ -1112,12 +1112,12 @@ router
     *     security:
     *       - token: []
     *     parameters:
-   *        - in: header
-   *          name: token
-   *          required: true
-   *          schema:
-   *             type: string
-   *          description: Authentication token
+    *        - in: header
+    *          name: token
+    *          required: true
+    *          schema:
+    *             type: string
+    *          description: Authentication token
     *       - in: query
     *         name: limit
     *         required: true
@@ -1176,11 +1176,11 @@ router
     *       - token: []
     *     parameters:
     *       - in: header
-    *          name: token
-    *          required: true
-    *          schema:
-    *             type: string
-    *          description: Authentication token
+    *         name: token
+    *         required: true
+    *         schema:
+    *            type: string
+    *         description: Authentication token
     *       - in: path
     *         name: id
     *         required: true
@@ -1220,12 +1220,12 @@ router
     *     security:
     *       - token: []
     *     parameters:
-   *        - in: header
-   *          name: token
-   *          required: true
-   *          schema:
-   *             type: string
-   *          description: Authentication token
+    *        - in: header
+    *          name: token
+    *          required: true
+    *          schema:
+    *             type: string
+    *          description: Authentication token
     *       - in: query
     *         name: limit
     *         required: true
@@ -1283,7 +1283,7 @@ router
     *     security:
     *       - token: []
     *     parameters:
-    *       - in: header
+    *        - in: header
     *          name: token
     *          required: true
     *          schema:
