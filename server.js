@@ -614,7 +614,7 @@ const options = {
       },
       servers: [
          {
-            url: "https://megafarm.admob.uz/api/v1"
+            url: "https://srvr.megafarm.uz/api/v1"
          }
       ]
    },
