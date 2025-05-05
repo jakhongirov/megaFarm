@@ -292,7 +292,7 @@ router
 
    /**
     * @swagger
-    * /user/list:
+    * /users/list:
     *   get:
     *     summary: Get a list of users
     *     tags: [Users]
