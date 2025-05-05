@@ -4,6 +4,7 @@ const cors = require("cors");
 const path = require('path')
 const fs = require('fs');
 const app = express();
+const router = require("./src/modules");
 const { v4: uuidv4 } = require('uuid');
 const QRCode = require('qrcode');
 const localText = require('./src/text/text.json')
@@ -632,5 +633,6 @@ app.use(express.urlencoded({
 }));
 app.use('/public', express.static(path.resolve(__dirname, 'public')))
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
+app.use("/api/v1", router);
 
 app.listen(4240, console.log(4240))
