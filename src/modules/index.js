@@ -805,14 +805,14 @@ router
 
    /**
     * @swagger
-    * /branch/delete:
+    * /branch/delete/{id}:
     *   delete:
     *     summary: Delete a branch
     *     tags: [Branches]
     *     security:
     *       - token: []
     *     parameters:
-    *       - in: query
+    *       - in: path
     *         name: id
     *         schema:
     *           type: integer
@@ -839,7 +839,7 @@ router
     *       500:
     *         description: Interval Server Error
     */
-   .delete('/branch/delete', AUTH, branches.DELETE_BRANCH)
+   .delete('/branch/delete/:id', AUTH, branches.DELETE_BRANCH)
 
    // RECEIPT
 
