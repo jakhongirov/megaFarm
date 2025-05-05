@@ -78,11 +78,15 @@ module.exports = {
          const imgUrl = uploadPhoto ? `${process.env.BACKEND_URL}/${uploadPhoto?.filename}` : null;
          const imgName = uploadPhoto ? uploadPhoto?.filename : null;
 
+         if (!Array.isArray(phone_number)) {
+            phone_number = [phone_number];
+         }
+
          const addBranch = await model.addBranch(
             branch_id,
             name_uz,
             name_ru,
-            JSON.parse(phone_number),
+            phone_number,
             schedule,
             address_uz,
             address_ru,
@@ -158,12 +162,16 @@ module.exports = {
             imgName = foundBranch?.image_name;
          }
 
+         if (!Array.isArray(phone_number)) {
+            phone_number = [phone_number];
+         }
+
          const editBranch = await model.editBranch(
             id,
             branch_id,
             name_uz,
             name_ru,
-            JSON.parse(phone_number),
+            phone_number,
             schedule,
             address_uz,
             address_ru,
