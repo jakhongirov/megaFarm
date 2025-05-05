@@ -6,7 +6,7 @@ const usersList = (limit, page, phone) => {
          *
       FROM
          users
-      ${phone ? `WHERE phone_number ilike '${phone}'` : ""}
+      ${phone ? `WHERE phone_number ilike '%${phone}%'` : ""}
       ORDER BY
          id DESC
       LIMIT ${limit}
