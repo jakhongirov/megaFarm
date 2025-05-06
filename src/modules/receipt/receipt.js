@@ -83,9 +83,9 @@ module.exports = {
             params.client,
             params.branch,
             params.created_date,
-            JSON.parse(params.payments),
+            params.payments,
             totalPrice,
-            JSON.parse(params.items)
+            params.items
          )
 
          if (addHistory) {

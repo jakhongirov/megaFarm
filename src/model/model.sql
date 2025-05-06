@@ -45,9 +45,9 @@ CREATE TABLE histories (
    user_id bigint,
    branch int,
    date text,
-   payments jsonb,
+   payments json [],
    amount bigint,
-   items jsonb,
+   items json [],
    created_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
 
