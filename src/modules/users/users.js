@@ -1,4 +1,5 @@
 const model = require('./model')
+const JWT = require('../../lib/jwt')
 
 module.exports = {
    GET_LIST: async (req, res) => {
