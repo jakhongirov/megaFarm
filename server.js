@@ -503,7 +503,7 @@ bot.on("callback_query", async msg => {
             .replace(/%date%/g, foundhistory.date)
             .replace(/%amount%/g, foundhistory.amount.toLocaleString('en-US'))
             .replace(/%name%/g, foundhistory.name)
-         const text = `${replaceText}\n\n${foundhistory.itmes.map((item, index) => `${++index}. ${item.name} - ${item.qty} ta - ${item.price.toLocaleString('en-US')} so'm`).join('\n')}`
+         const text = `${replaceText}\n\n${foundhistory?.items.map((item, index) => `${++index}. ${item.name} - ${item.qty} ta - ${item.price.toLocaleString('en-US')} so'm`).join('\n')}`
          bot.sendMessage(chatId, text)
       } else if (foundUser.bot_lang == 'ru') {
          const foundhistory = await model.foundhistory(id, 'ru')
