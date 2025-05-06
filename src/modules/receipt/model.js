@@ -1,5 +1,17 @@
 const { fetch, fetchALL } = require('../../lib/postgres')
 
+const findUserCode = (code) => {
+   const QUERY = `
+      SELECT
+         *
+      FROM
+         users
+      WHERE
+         code = $1;
+   `;
+
+   return fetch(QUERY, code)
+}
 const foundUser = (chat_id) => {
    const QUERY = `
       SELECT
@@ -114,6 +126,7 @@ const addHistory = (
 }
 
 module.exports = {
+   findUserCode,
    foundUser,
    paidBonus,
    addBonus,

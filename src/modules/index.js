@@ -909,7 +909,7 @@ router
 
    /**
     * @swagger
-    * /create-receipt:
+    * /receipt:
     *   post:
     *     summary: Create a receipt and apply bonus logic
     *     tags: [POS]
@@ -1015,7 +1015,7 @@ router
     *       500:
     *         description: Internal server error
     */
-   .post('/create-receipt', receipt.CREATE_RECEIPT)
+   .post('/receipt', receipt.CREATE_RECEIPT)
 
    // HISTORIES
    /**

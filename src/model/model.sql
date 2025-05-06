@@ -10,7 +10,7 @@ CREATE TABLE users (
    name text,
    phone_number text,
    code text,
-   balance bigint DEFAULT 0,
+   balance numeric DEFAULT 0,
    qrcode_image text,
    qrcode_image_url text,
    chat_id bigint,
@@ -62,6 +62,11 @@ CREATE TABLE histories_bonus (
 
 CREATE TABLE messages (
    id bigserial PRIMARY KEY,
-   
+   text text,
+   balance_from bigint,
+   balance_to bigint,
+   file_url text,
+   file_name text,
+   file_type text,
    created_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
