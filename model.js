@@ -109,6 +109,7 @@ const branches = (lang) => {
 const historiesList = (chatId, offset) => {
    const QUERY = `
       SELECT
+         id,
          amount,
          TO_CHAR(date::timestamp, 'DD.MM.YYYY') AS date_only
       FROM
