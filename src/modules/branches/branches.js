@@ -7,12 +7,14 @@ module.exports = {
    GET_LIST: async (req, res) => {
       try {
          const branchesList = await model.branchesList()
+         const branchesCount = await model.branchesCount()
 
          if (branchesList?.length > 0) {
             return res.status(200).json({
                status: 200,
                message: "Success",
-               data: branchesList
+               data: branchesList,
+               count: branchesCount.count
             })
          } else {
             return res.status(404).json({

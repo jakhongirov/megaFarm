@@ -15,6 +15,17 @@ const usersList = (limit, page, phone) => {
 
    return fetchALL(QUERY)
 }
+const usersCount = (phone) => {
+   const QUERY = `
+      SELECT
+         count(*)
+      FROM
+         users
+      ${phone ? `WHERE phone_number ilike '%${phone}%'` : ""}
+   `;
+
+   return fetchALL(QUERY)
+}
 const foundUser = (id) => {
    const QUERY = `
       SELECT
@@ -79,6 +90,7 @@ const deleteUser = (id) => {
 
 module.exports = {
    usersList,
+   usersCount,
    foundUser,
    findUserCode,
    editName,

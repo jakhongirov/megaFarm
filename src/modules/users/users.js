@@ -8,12 +8,14 @@ module.exports = {
 
          if (limit && page) {
             const usersList = await model.usersList(limit, page, phone)
+            const usersCount = await model.usersCount( phone)
 
             if (usersList?.length > 0) {
                return res.status(200).json({
                   status: 200,
                   message: "Success",
-                  data: usersList
+                  data: usersList,
+                  count: usersCount.count
                })
             } else {
                return res.status(404).json({

@@ -12,6 +12,16 @@ const branchesList = () => {
 
    return fetchALL(QUERY)
 }
+const branchesCount = () => {
+   const QUERY = `
+      SELECT
+         count(*)
+      FROM
+         branches;
+   `;
+
+   return fetch(QUERY)
+}
 const foundBranch = (id) => {
    const QUERY = `
       SELECT
@@ -166,6 +176,7 @@ const deleteBranch = (id) => {
 
 module.exports = {
    branchesList,
+   branchesCount,
    foundBranch,
    addBranch,
    editBranch,

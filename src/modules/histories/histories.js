@@ -7,12 +7,14 @@ module.exports = {
 
          if (limit && page) {
             const historiesList = await model.historiesList(limit, page, user_id, receipt_no)
+            const historiesCount = await model.historiesCount(user_id, receipt_no)
 
             if (historiesList?.length > 0) {
                return res.status(200).json({
                   status: 200,
                   message: "Success",
-                  data: historiesList
+                  data: historiesList,
+                  count: historiesCount.count
                })
             } else {
                return res.status(404).json({

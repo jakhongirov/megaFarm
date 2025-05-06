@@ -15,6 +15,17 @@ const historiesList = (limit, page, user_id, receipt_no) => {
 
    return fetchALL(QUERY)
 }
+const historiesCount = (user_id, receipt_no) => {
+   const QUERY = `
+      SELECT
+         count(*)
+      FROM
+         histories
+      ${user_id && receipt_no ? `WHERE user_id = ${user_id} and receipt_no = ${receipt_no}` : user_id ? `WHERE user_id = ${user_id}` : receipt_no ? `WHERE receipt_no = ${receipt_no}` : ''}
+   `;
+
+   return fetchALL(QUERY)
+}
 const foundHistory = (id) => {
    const QUERY = `
       SELECT
@@ -63,6 +74,7 @@ const foundBonusHistory = (id) => {
 
 module.exports = {
    historiesList,
+   historiesCount,
    foundHistory,
    bonusHistoriesList,
    foundBonusHistory
