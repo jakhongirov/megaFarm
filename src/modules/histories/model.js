@@ -24,7 +24,7 @@ const historiesCount = (user_id, receipt_no) => {
       ${user_id && receipt_no ? `WHERE user_id = ${user_id} and receipt_no = ${receipt_no}` : user_id ? `WHERE user_id = ${user_id}` : receipt_no ? `WHERE receipt_no = ${receipt_no}` : ''}
    `;
 
-   return fetchALL(QUERY)
+   return fetch(QUERY)
 }
 const foundHistory = (id) => {
    const QUERY = `

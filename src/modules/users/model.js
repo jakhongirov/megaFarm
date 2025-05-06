@@ -24,7 +24,7 @@ const usersCount = (phone) => {
       ${phone ? `WHERE phone_number ilike '%${phone}%'` : ""}
    `;
 
-   return fetchALL(QUERY)
+   return fetch(QUERY)
 }
 const foundUser = (id) => {
    const QUERY = `
