@@ -110,7 +110,7 @@ const historiesList = (chatId, offset) => {
    const QUERY = `
       SELECT
          amount,
-         TO_CHAR(date, 'DD.MM.YYYY') AS date_only
+         TO_CHAR(date::timestamp, 'DD.MM.YYYY') AS date_only
       FROM
          histories
       WHERE

@@ -46,7 +46,7 @@ CREATE TABLE histories (
    branch int,
    date text,
    payments json [],
-   amount bigint,
+   amount numeric,
    items json [],
    created_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
@@ -55,7 +55,7 @@ CREATE TABLE histories_bonus (
    id bigserial PRIMARY KEY,
    receipt_no bigint,
    user_id bigint,
-   amount bigint,
+   amount numeric,
    income boolean DEFAULT true,
    created_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );

@@ -54,7 +54,7 @@ module.exports = {
 
          const foundUser = await model.foundUser(params?.client)
          const totalPrice = params.payments.reduce((sum, payment) => sum + payment.value, 0);
-         const bonus = Math.floor(totalPrice * 0.05);
+         const bonus = totalPrice * 0.05;
          const paidBonus = params?.payments?.find(e => e.name === "BONUS" && e.value > 0) || null
 
          if (paidBonus) {
