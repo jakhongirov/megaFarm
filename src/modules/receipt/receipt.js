@@ -36,6 +36,8 @@ module.exports = {
          const token = authHeader?.split(' ')[1] || null;
          const userStatus = new JWT(token).verify()
 
+         console.log(params)
+
          if (!token && !userStatus) {
             return res.status(401).json({
                status: 401,
