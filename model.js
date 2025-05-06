@@ -172,7 +172,7 @@ const foundnearBranch = (userLatitude, userLongitude, lang) => {
             sin(radians($1)) * sin(radians(latitude))
          )) AS distance
       FROM 
-         farms
+         branches
       ORDER BY 
          distance
       LIMIT 1;
