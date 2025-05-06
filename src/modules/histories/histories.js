@@ -77,12 +77,17 @@ module.exports = {
                user_id,
                receipt_no
             )
+            const bonusHistoriesCount = await model.bonusHistoriesCount(
+               user_id,
+               receipt_no
+            )
 
             if (bonusHistoriesList?.length > 0) {
                return res.status(200).json({
                   status: 200,
                   message: "Success",
-                  data: bonusHistoriesList
+                  data: bonusHistoriesList,
+                  count: bonusHistoriesCount.count
                })
             } else {
                return res.status(404).json({

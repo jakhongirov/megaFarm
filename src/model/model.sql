@@ -59,3 +59,9 @@ CREATE TABLE histories_bonus (
    income boolean DEFAULT true,
    created_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE messages (
+   id bigserial PRIMARY KEY,
+   
+   created_at timestamptz DEFAULT CURRENT_TIMESTAMP
+);

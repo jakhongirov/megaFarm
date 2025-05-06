@@ -58,6 +58,20 @@ const bonusHistoriesList = (
 
    return fetchALL(QUERY)
 }
+const bonusHistoriesCount = (
+   user_id,
+   receipt_no
+) => {
+   const QUERY = `
+      SELECT
+         *
+      FROM
+         histories_bonus
+      ${user_id && receipt_no ? `WHERE user_id = ${user_id} and receipt_no = ${receipt_no}` : user_id ? `WHERE user_id = ${user_id}` : receipt_no ? `WHERE receipt_no = ${receipt_no}` : ''}
+   `;
+
+   return fetchALL(QUERY)
+}
 const foundBonusHistory = (id) => {
    const QUERY = `
       SELECT
@@ -77,5 +91,6 @@ module.exports = {
    historiesCount,
    foundHistory,
    bonusHistoriesList,
+   bonusHistoriesCount,
    foundBonusHistory
 }
