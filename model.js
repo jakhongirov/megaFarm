@@ -150,7 +150,7 @@ const foundhistory = (id, lang) => {
       ON
          b.branch_id = h.branch
       WHERE
-         id = $1;
+         h.id = $1;
    `;
 
    return fetch(QUERY, id)
