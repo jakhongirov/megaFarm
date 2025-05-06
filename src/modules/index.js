@@ -1015,7 +1015,7 @@ router
     *       500:
     *         description: Internal server error
     */
-   .post('/receipt', receipt.CREATE_RECEIPT)
+   .post('/receipt', receipt.RECEIPT)
 
    // HISTORIES
    /**
