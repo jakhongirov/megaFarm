@@ -1,4 +1,5 @@
 const model = require('./model')
+const JWT = require('../../lib/jwt')
 
 module.exports = {
    LOGIN: async (req, res) => {
