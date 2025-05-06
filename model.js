@@ -165,7 +165,7 @@ const foundnearBranch = (userLatitude, userLongitude, lang) => {
          address_${lang} as address,
          landmark_${lang} as landmark,
          address_link,
-         image_names,
+         image_name,
          (6371 * acos(
             cos(radians($1)) * cos(radians(latitude)) * 
             cos(radians(longitude) - radians($2)) + 
