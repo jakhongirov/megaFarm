@@ -2,6 +2,7 @@ CREATE TABLE admins (
    admin_id bigserial PRiMARY KEY,
    admin_email text not null,
    admin_password text not null,
+   role text DEFAULT 'admin',
    admin_create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -65,6 +66,7 @@ CREATE TABLE messages (
    text text,
    balance_from bigint,
    balance_to bigint,
+   bot_lang text,
    file_url text,
    file_name text,
    file_type text,

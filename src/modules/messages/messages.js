@@ -75,16 +75,16 @@ module.exports = {
    ADD_MESSAGE: async (req, res) => {
       try {
          const uploadFile = req.file;
-         const { text, balance_from, balance_to } = req.body;
+         const { text, balance_from, balance_to, bot_lang } = req.body;
 
-         const foundUsers = await model.foundUsers(balance_from, balance_to);
+         const foundUsers = await model.foundUsers(balance_from, balance_to, bot_lang);
 
          const fileUrl = uploadFile ? `${process.env.BACKEND_URL}/${uploadFile.filename}` : null;
          const fileName = uploadFile?.filename || null;
          const mimeType = uploadFile?.mimetype || null;
 
          // Save message to DB
-         await model.addMessage(text, balance_from, balance_to, fileUrl, fileName, mimeType);
+         await model.addMessage(text, balance_from, balance_to, bot_lang, fileUrl, fileName, mimeType);
 
          if (!foundUsers.length) {
             return res.json({ message: "No users found in the specified balance range." });

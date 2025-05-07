@@ -41,11 +41,11 @@ module.exports = {
 
    REGISTER_ADMIN: async (req, res) => {
       try {
-         const { admin_email, admin_password } = req.body
+         const { admin_email, admin_password, role } = req.body
          const checkAdmin = await model.checkAdmin(admin_email)
          if (!checkAdmin) {
             const pass_hash = await bcryptjs.hash(admin_password, 10)
-            const registerAdmin = await model.registerAdmin(admin_email, pass_hash)
+            const registerAdmin = await model.registerAdmin(admin_email, pass_hash, role)
 
             if (registerAdmin) {
                const token = await new JWT({ id: registerAdmin.user_id }).sign()

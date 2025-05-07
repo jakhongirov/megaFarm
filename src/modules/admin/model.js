@@ -51,10 +51,12 @@ const REGISTER_ADMIN = `
    INSERT INTO
       admins (
          admin_email,
-         admin_password
+         admin_password,
+         role
       ) VALUES (
          $1,
-         $2
+         $2,
+         $3
       )
    RETURNING *;
 `;
@@ -74,7 +76,7 @@ const adminList = (limit, page) => {
    return fetchALL(AMIN_LIST)
 }
 const checkAdmin = (admin_email) => fetch(CHECK_ADMIN, admin_email)
-const registerAdmin = (admin_email, pass_hash) => fetch(REGISTER_ADMIN, admin_email, pass_hash)
+const registerAdmin = (admin_email, pass_hash, role) => fetch(REGISTER_ADMIN, admin_email, pass_hash, role)
 const checkAdminById = (id) => fetch(CHECK_ADMIN_ID, id)
 const editAdminPass = (id, email, pass_hash) => fetch(EDIT_ADMIN_PASS, id, email, pass_hash)
 const editEmail = (id, email) => fetch(EDIT_ADMIN_EMAIL, id, email)

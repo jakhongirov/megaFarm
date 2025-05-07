@@ -13,6 +13,7 @@ const users = require('./users/users')
 const branches = require('./branches/branches')
 const receipt = require('./receipt/receipt')
 const histories = require('./histories/histories')
+const messages = require('./messages/messages')
 
 router
 
@@ -54,6 +55,9 @@ router
    *             admin_password:
    *                type: string
    *                description: admin put password for login and it hashing
+   *             role: 
+   *                type: string
+   *                description: admin's role
    *             admin_create_at:
    *                type: string
    *                description: admin created date
@@ -61,6 +65,7 @@ router
    *             admin_id: 1
    *             admin_email: diyor.jakhongirov@gmail.com
    *             admin_password: 2jk3jnnj3nj43nb4j3bjeb3b23j
+   *             role: admin or superadmin
    *             admin_create_at: 2024-01-23 10:52:41 +0000
   */
 
@@ -1317,5 +1322,156 @@ router
     *         description: Internal server error
     */
    .get('/bonus/:id', AUTH, histories.GET_BONUS_HISTORY_ID)
+
+   // MESSAGES
+
+   /**
+    * @swagger
+    * components:
+    *   schemas:
+    *     Message:
+    *       type: object
+    *       properties:
+    *         id:
+    *           type: integer
+    *           example: 1
+    *         text:
+    *           type: string
+    *           example: "Sample message text"
+    *         balance_from:
+    *           type: integer
+    *           example: 10000
+    *         balance_to:
+    *           type: integer
+    *           example: 20000
+    *         bot_lang:
+    *           type: string
+    *           example: "en"
+    *         file_url:
+    *           type: string
+    *           example: "https://example.com/files/audio.mp3"
+    *         file_name:
+    *           type: string
+    *           example: "audio.mp3"
+    *         file_type:
+    *           type: string
+    *           example: "audio"
+    *         created_at:
+    *           type: string
+    *           format: date-time
+    *           example: "2025-05-07T10:30:00Z"
+    */
+
+   /**
+    * @swagger
+    * tags:
+    *    name: Message
+    *    description: Admin managing API
+    */
+
+   /**
+    * @swagger
+    * /messages/list:
+    *   get:
+    *     summary: Get list of messages
+    *     tags: [Messages]
+    *     parameters:
+    *       - name: limit
+    *         in: query
+    *         required: true
+    *         schema:
+    *           type: integer
+    *       - name: page
+    *         in: query
+    *         required: true
+    *         schema:
+    *           type: integer
+    *     responses:
+    *       200:
+    *         description: Successfully retrieved messages
+    *       400:
+    *         description: Missing limit or page
+    *       500:
+    *         description: Internal server error
+    */
+   .get('/messages/list', AUTH, messages.GET_LIST)
+
+   /**
+    * @swagger
+    * /message/{id}:
+    *   get:
+    *     summary: Get a message by ID
+    *     tags: [Messages]
+    *     parameters:
+    *       - name: id
+    *         in: path
+    *         required: true
+    *         schema:
+    *           type: integer
+    *     responses:
+    *       200:
+    *         description: Successfully retrieved message
+    *       404:
+    *         description: Message not found
+    *       500:
+    *         description: Internal server error
+    */
+   .get('/message/:id', AUTH, messages.GET_ID)
+
+   /**
+    * @swagger
+    * /message/add:
+    *   post:
+    *     summary: Add a new message
+    *     tags: [Messages]
+    *     requestBody:
+    *       required: true
+    *       content:
+    *         multipart/form-data:
+    *           schema:
+    *             type: object
+    *             properties:
+    *               text:
+    *                 type: string
+    *               balance_from:
+    *                 type: integer
+    *               balance_to:
+    *                 type: integer
+    *               bot_lang:
+    *                 type: string
+    *               file:
+    *                 type: string
+    *                 format: binary
+    *     responses:
+    *       201:
+    *         description: Message created successfully
+    *       400:
+    *         description: Bad request
+    *       500:
+    *         description: Internal server error
+    */
+   .post('/message/send', AUTH, messages.ADD_MESSAGE)
+
+   /**
+    * @swagger
+    * /message/{id}:
+    *   delete:
+    *     summary: Delete a message by ID
+    *     tags: [Messages]
+    *     parameters:
+    *       - name: id
+    *         in: path
+    *         required: true
+    *         schema:
+    *           type: integer
+    *     responses:
+    *       200:
+    *         description: Successfully deleted message
+    *       404:
+    *         description: Message not found
+    *       500:
+    *         description: Internal server error
+    */
+   .delete('/message/delete', AUTH, messages.DELETE_MESSAGE)
 
 module.exports = router
