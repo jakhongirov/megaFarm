@@ -1420,7 +1420,7 @@ router
 
    /**
     * @swagger
-    * /message/add:
+    * /message/send:
     *   post:
     *     summary: Add a new message
     *     tags: [Messages]
@@ -1450,7 +1450,7 @@ router
     *       500:
     *         description: Internal server error
     */
-   .post('/x/send', AUTH, messages.ADD_MESSAGE)
+   .post('/message/send', AUTH, messages.ADD_MESSAGE)
 
    /**
     * @swagger
