@@ -14,6 +14,7 @@ const branches = require('./branches/branches')
 const receipt = require('./receipt/receipt')
 const histories = require('./histories/histories')
 const messages = require('./messages/messages')
+const dashboard = require('./dashboard/dashboard')
 
 router
 
@@ -1472,5 +1473,71 @@ router
     *         description: Internal server error
     */
    .delete('/message/delete', AUTH, messages.DELETE_MESSAGE)
+
+   /**
+    * @swagger
+    * /dashboard:
+    *   get:
+    *     tags:
+    *       - Dashboard
+    *     summary: Get dashboard statistics
+    *     description: Returns monthly statistics, totals for users, receipts, amount, and bonuses.
+    *     security:
+    *       - bearerAuth: []
+    *     responses:
+    *       200:
+    *         description: Dashboard statistics retrieved successfully
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 200
+    *                 message:
+    *                   type: string
+    *                   example: Success
+    *                 data:
+    *                   type: object
+    *                   properties:
+    *                     monthly_amount:
+    *                       type: array
+    *                       items:
+    *                         type: object
+    *                         properties:
+    *                           branch:
+    *                             type: string
+    *                             example: Tashkent
+    *                           amount:
+    *                             type: integer
+    *                             example: 150000
+    *                     current_month:
+    *                       type: array
+    *                       items:
+    *                         type: object
+    *                         properties:
+    *                           day:
+    *                             type: string
+    *                             example: 2025-05-01
+    *                           amount:
+    *                             type: integer
+    *                             example: 20000
+    *                     total_amount:
+    *                       type: integer
+    *                       example: 1250000
+    *                     total_bonus:
+    *                       type: integer
+    *                       example: 34000
+    *                     total_user:
+    *                       type: integer
+    *                       example: 487
+    *                     total_receipt:
+    *                       type: integer
+    *                       example: 932
+    *       500:
+    *         description: Internal Server Error
+    */
+   .get('/dashboard/data', AUTH, dashboard.DASHBOARD)
 
 module.exports = router
