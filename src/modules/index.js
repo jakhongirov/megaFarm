@@ -1450,7 +1450,7 @@ router
     *       500:
     *         description: Internal server error
     */
-   .post('/message/send', AUTH, messages.ADD_MESSAGE)
+   .post('/message/send', AUTH, FileUpload.single('file'), messages.ADD_MESSAGE)
 
    /**
     * @swagger
