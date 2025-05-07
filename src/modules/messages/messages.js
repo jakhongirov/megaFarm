@@ -98,15 +98,21 @@ module.exports = {
             const chatId = user?.chat_id;
             if (!chatId) return;
 
+            const formattedText = text
+               .replace(/<p>/g, '')
+               .replace(/<\/p>/g, '\n')
+               .replace(/<br\s*\/?>/g, '\n')
+               .replace(/&nbsp;/g, ' ');
+
             try {
                if (!uploadFile) {
-                  await bot.sendMessage(chatId, text, { parse_mode: "HTML" });
+                  await bot.sendMessage(chatId, formattedText, { parse_mode: "HTML" });
                } else if (mimeType.startsWith("image/")) {
-                  await bot.sendPhoto(chatId, fileUrl, { caption: text, parse_mode: "HTML" });
+                  await bot.sendPhoto(chatId, fileUrl, { caption: formattedText, parse_mode: "HTML" });
                } else if (mimeType.startsWith("video/")) {
-                  await bot.sendVideo(chatId, fileUrl, { caption: text, parse_mode: "HTML" });
+                  await bot.sendVideo(chatId, fileUrl, { caption: formattedText, parse_mode: "HTML" });
                } else {
-                  await bot.sendMessage(chatId, `${text}\n\nFile: ${fileUrl}`, { parse_mode: "HTML" });
+                  await bot.sendMessage(chatId, `${formattedText}\n\nFile: ${fileUrl}`, { parse_mode: "HTML" });
                }
             } catch (err) {
                console.error(`❌ Failed to send to ${chatId}:`, err.message);
