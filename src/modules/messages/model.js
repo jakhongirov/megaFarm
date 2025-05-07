@@ -111,5 +111,6 @@ module.exports = {
    messagesCount,
    foundMessage,
    foundUsers,
+   addMessage,
    deleteMessage
 }
