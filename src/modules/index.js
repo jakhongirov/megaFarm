@@ -1538,6 +1538,6 @@ router
     *       500:
     *         description: Internal Server Error
     */
-   .get('/dashboard/data', AUTH, dashboard.DASHBOARD)
+   .get('/dashboard', AUTH, dashboard.DASHBOARD)
 
 module.exports = router
