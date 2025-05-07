@@ -1324,7 +1324,6 @@ router
    .get('/bonus/:id', AUTH, histories.GET_BONUS_HISTORY_ID)
 
    // MESSAGES
-
    /**
     * @swagger
     * components:
@@ -1365,7 +1364,7 @@ router
    /**
     * @swagger
     * tags:
-    *    name: Message
+    *    name: Messages
     *    description: Admin managing API
     */
 
