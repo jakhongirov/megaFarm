@@ -115,13 +115,13 @@ module.exports = {
 
    EDIT_ADMIN: async (req, res) => {
       try {
-         const { id, admin_email, admin_password } = req.body
+         const { id, admin_email, admin_password, role } = req.body
          const checkAdminById = await model.checkAdminById(id)
 
          if (checkAdminById) {
             if (admin_password) {
                const pass_hash = await bcryptjs.hash(admin_password, 10)
-               const editAdminPass = await model.editAdminPass(id, admin_email, pass_hash)
+               const editAdminPass = await model.editAdminPass(id, admin_email, pass_hash, role)
 
                if (editAdminPass) {
                   return res.json({

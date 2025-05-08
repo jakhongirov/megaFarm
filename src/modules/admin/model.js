@@ -33,7 +33,8 @@ const EDIT_ADMIN_PASS = `
       admins
    SET
       admin_email = $2,
-      admin_password = $3
+      admin_password = $3,
+      role = $4
    WHERE
       admin_id = $1
    RETURNING *;
@@ -78,7 +79,7 @@ const adminList = (limit, page) => {
 const checkAdmin = (admin_email) => fetch(CHECK_ADMIN, admin_email)
 const registerAdmin = (admin_email, pass_hash, role) => fetch(REGISTER_ADMIN, admin_email, pass_hash, role)
 const checkAdminById = (id) => fetch(CHECK_ADMIN_ID, id)
-const editAdminPass = (id, email, pass_hash) => fetch(EDIT_ADMIN_PASS, id, email, pass_hash)
+const editAdminPass = (id, email, pass_hash, role) => fetch(EDIT_ADMIN_PASS, id, email, pass_hash, role)
 const editEmail = (id, email) => fetch(EDIT_ADMIN_EMAIL, id, email)
 const deleteAdmin = (id) => fetch(DELETE_ADMIN, id)
 
