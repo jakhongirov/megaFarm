@@ -1454,7 +1454,7 @@ router
 
    /**
     * @swagger
-    * /message/{id}:
+    * /message/delete/{id}:
     *   delete:
     *     summary: Delete a message by ID
     *     tags: [Messages]
@@ -1472,7 +1472,7 @@ router
     *       500:
     *         description: Internal server error
     */
-   .delete('/message/delete', AUTH, messages.DELETE_MESSAGE)
+   .delete('/message/delete/:id', AUTH, messages.DELETE_MESSAGE)
 
    /**
     * @swagger
