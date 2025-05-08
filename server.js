@@ -224,7 +224,7 @@ bot.on('message', async msg => {
             }
          }).then(async () => {
             await model.editStep(chatId, 'menu')
-            await model.changeLang(chatId, 'uz')
+            await model.changeLang(chatId, 'ru')
          })
       }
    } else if (text == '🇺🇿 UZ') {
