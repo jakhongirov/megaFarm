@@ -84,6 +84,11 @@ bot.onText(/\/start/, async msg => {
                         text: localText.nearAddressBtnUz
                      },
                   ],
+                  [
+                     {
+                        text: localText.changeLangBtnUz
+                     },
+                  ]
                ],
                resize_keyboard: true
             }
@@ -113,6 +118,11 @@ bot.onText(/\/start/, async msg => {
                         text: localText.nearAddressBtnRu
                      },
                   ],
+                  [
+                     {
+                        text: localText.changeLangBtnRu
+                     },
+                  ]
                ],
                resize_keyboard: true
             }
@@ -145,7 +155,79 @@ bot.on('message', async msg => {
    const text = msg.text;
    const foundUser = await model.foundUser(chatId)
 
-   if (text == '🇺🇿 UZ') {
+   if (foundUser.bot_step == 'change_lang') {
+      if (text == '🇺🇿 Uz') {
+         bot.sendMessage(chatId, localText.menuTextUz, {
+            parse_mode: "HTML",
+            reply_markup: {
+               keyboard: [
+                  [
+                     {
+                        text: localText.balanceBtnUz
+                     }
+                  ],
+                  [
+                     {
+                        text: localText.historiesBtnUz
+                     }
+                  ],
+                  [
+                     {
+                        text: localText.addressBtnUz
+                     },
+                     {
+                        text: localText.nearAddressBtnUz
+                     },
+                  ],
+                  [
+                     {
+                        text: localText.changeLangBtnUz
+                     },
+                  ]
+               ],
+               resize_keyboard: true
+            }
+         }).then(async () => {
+            await model.editStep(chatId, 'menu')
+            await model.changeLang(chatId, 'uz')
+         })
+      } else if (text == '🇷🇺 Ру') {
+         bot.sendMessage(chatId, localText.menuTextRu, {
+            parse_mode: "HTML",
+            reply_markup: {
+               keyboard: [
+                  [
+                     {
+                        text: localText.balanceBtnRu
+                     }
+                  ],
+                  [
+                     {
+                        text: localText.historiesBtnRu
+                     }
+                  ],
+                  [
+                     {
+                        text: localText.addressBtnRu
+                     },
+                     {
+                        text: localText.nearAddressBtnRu
+                     },
+                  ],
+                  [
+                     {
+                        text: localText.changeLangBtnRu
+                     },
+                  ]
+               ],
+               resize_keyboard: true
+            }
+         }).then(async () => {
+            await model.editStep(chatId, 'menu')
+            await model.changeLang(chatId, 'uz')
+         })
+      }
+   } else if (text == '🇺🇿 UZ') {
       bot.sendMessage(chatId, localText.startTextUz, {
          parse_mode: "HTML",
          reply_markup: {
@@ -351,6 +433,42 @@ bot.on('message', async msg => {
             resize_keyboard: true
          }
       })
+   } else if (text == localText.changeLangBtnUz) {
+      bot.sendMessage(chatId, localText.changeLangTextUz, {
+         reply_markup: {
+            keyboard: [
+               [
+                  {
+                     text: '🇺🇿 Uz',
+                  },
+                  {
+                     text: '🇷🇺 Ру',
+                  }
+               ],
+            ],
+            resize_keyboard: true,
+         }
+      }).then(async () => {
+         await model.editStep(chatId, 'change_lang')
+      })
+   } else if (text == localText.changeLangBtnRu) {
+      bot.sendMessage(chatId, localText.changeLangTextRu, {
+         reply_markup: {
+            keyboard: [
+               [
+                  {
+                     text: '🇺🇿 Uz',
+                  },
+                  {
+                     text: '🇷🇺 Ру',
+                  }
+               ],
+            ],
+            resize_keyboard: true,
+         }
+      }).then(async () => {
+         await model.editStep(chatId, 'change_lang')
+      })
    }
 })
 
@@ -449,6 +567,11 @@ bot.on("callback_query", async msg => {
                         text: localText.nearAddressBtnUz
                      },
                   ],
+                  [
+                     {
+                        text: localText.changeLangBtnUz
+                     },
+                  ]
                ],
                resize_keyboard: true
             }
@@ -478,6 +601,11 @@ bot.on("callback_query", async msg => {
                         text: localText.nearAddressBtnRu
                      },
                   ],
+                  [
+                     {
+                        text: localText.changeLangBtnRu
+                     },
+                  ]
                ],
                resize_keyboard: true
             }
@@ -558,6 +686,11 @@ bot.on('location', async msg => {
                      text: localText.nearAddressBtnUz
                   },
                ],
+               [
+                  {
+                     text: localText.changeLangBtnUz
+                  },
+               ]
             ],
             resize_keyboard: true
          }
@@ -597,6 +730,11 @@ bot.on('location', async msg => {
                      text: localText.nearAddressBtnRu
                   },
                ],
+               [
+                  {
+                     text: localText.changeLangBtnRu
+                  },
+               ]
             ],
             resize_keyboard: true
          }

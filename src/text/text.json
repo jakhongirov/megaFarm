@@ -34,6 +34,9 @@
 	"nearAddressBtnUz": "📍 Yaqin dorixona",
 	"nearAddressBtnRu": "📍 Ближайшая аптека",
 
+	"changeLangBtnUz": "🌐 Tilni o'zgartirish",
+	"changeLangBtnRu": "🌐 Изменить язык",
+
 	"balanceTextUz": "Balans: <b>%balance% so’m</b>",
 	"balanceTextRu": "Баланс: <b>%balance% сум</b>",
 
@@ -56,5 +59,8 @@
 	"sendLocationBtnRu": "📍 Отправить местоположение",
 
 	"historiesTextUz": "<b>%date% - %amount% so'm\nFilial: %name%</b>",
-	"historiesTextRu": "<b>%date% - %amount% сум\nФилиал: %name%</b>"
+	"historiesTextRu": "<b>%date% - %amount% сум\nФилиал: %name%</b>",
+
+	"changeLangTextUz": "Iltimos bot tilni tanlang.",
+	"changeLangTextRu": "Пожалуйста, выберите язык."
 }
