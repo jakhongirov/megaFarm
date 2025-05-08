@@ -3,12 +3,14 @@ const { fetch, fetchALL } = require('../../lib/postgres')
 const monthlyAmountBranches = () => {
    const QUERY = `
       SELECT
-         TO_CHAR(DATE_TRUNC('month', h.date::timestamp), 'Month') AS month,
-         SUM(h.amount) AS total_amount
+         TO_CHAR(DATE_TRUNC('month', date::timestamp), 'Month') AS month,
+         SUM(amount) AS total_amount
       FROM
-         histories h
+         histories
       WHERE
-         h.date::timestamp >= DATE_TRUNC('month', CURRENT_DATE) - INTERVAL '11 months'
+         date::timestamp >= DATE_TRUNC('month', CURRENT_DATE) - INTERVAL '11 months'
+      GROUP BY
+         DATE_TRUNC('month', date::timestamp)
       ORDER BY 
          month;
    `;
