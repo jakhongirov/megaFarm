@@ -22,7 +22,8 @@ const EDIT_ADMIN_EMAIL = `
    UPDATE
       admins
    SET
-      admin_email = $2
+      admin_email = $2,
+      role = $3
    WHERE
       admin_id = $1
    RETURNING *;
@@ -80,7 +81,7 @@ const checkAdmin = (admin_email) => fetch(CHECK_ADMIN, admin_email)
 const registerAdmin = (admin_email, pass_hash, role) => fetch(REGISTER_ADMIN, admin_email, pass_hash, role)
 const checkAdminById = (id) => fetch(CHECK_ADMIN_ID, id)
 const editAdminPass = (id, email, pass_hash, role) => fetch(EDIT_ADMIN_PASS, id, email, pass_hash, role)
-const editEmail = (id, email) => fetch(EDIT_ADMIN_EMAIL, id, email)
+const editEmail = (id, email, role) => fetch(EDIT_ADMIN_EMAIL, id, email, role)
 const deleteAdmin = (id) => fetch(DELETE_ADMIN, id)
 
 module.exports = {

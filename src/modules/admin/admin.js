@@ -115,13 +115,13 @@ module.exports = {
 
    EDIT_ADMIN: async (req, res) => {
       try {
-         const { id, admin_email, admin_password, role } = req.body
+         const { admin_id, admin_email, admin_password, role } = req.body
          const checkAdminById = await model.checkAdminById(id)
 
          if (checkAdminById) {
             if (admin_password) {
                const pass_hash = await bcryptjs.hash(admin_password, 10)
-               const editAdminPass = await model.editAdminPass(id, admin_email, pass_hash, role)
+               const editAdminPass = await model.editAdminPass(admin_id, admin_email, pass_hash, role)
 
                if (editAdminPass) {
                   return res.json({
@@ -137,7 +137,7 @@ module.exports = {
                }
 
             } else {
-               const editEmail = await model.editEmail(id, admin_email)
+               const editEmail = await model.editEmail(admin_id, admin_email, role)
 
                if (editEmail) {
                   return res.json({
@@ -171,10 +171,10 @@ module.exports = {
 
    DELETE_ADMIN: async (req, res) => {
       try {
-         const { id } = req.body
+         const { admin_id } = req.body
 
-         if (id) {
-            const deleteAdmin = await model.deleteAdmin(id)
+         if (admin_id) {
+            const deleteAdmin = await model.deleteAdmin(admin_id)
             if (deleteAdmin) {
                return res.json({
                   status: 200,
