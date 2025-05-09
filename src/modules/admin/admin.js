@@ -116,7 +116,7 @@ module.exports = {
    EDIT_ADMIN: async (req, res) => {
       try {
          const { admin_id, admin_email, admin_password, role } = req.body
-         const checkAdminById = await model.checkAdminById(id)
+         const checkAdminById = await model.checkAdminById(admin_id)
 
          if (checkAdminById) {
             if (admin_password) {
