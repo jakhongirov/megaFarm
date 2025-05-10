@@ -61,7 +61,9 @@ bot.onText(/\/start/, async msg => {
    const foundUser = await model.foundUser(chatId)
 
    if (foundUser) {
-      if (foundUser.bot_lang == 'uz') {
+      if (foundUser.bot_step == "") {
+
+      } else if (foundUser.bot_lang == 'uz') {
          bot.sendMessage(chatId, localText.menuTextUz, {
             parse_mode: "HTML",
             reply_markup: {
@@ -244,7 +246,10 @@ bot.on('message', async msg => {
       }).then(async () => {
          const code = uuidv4();
          const qrcode = `./public/images/qrcode_${chatId}.png`;
-         await QRCode.toFile(qrcode, code);
+         await QRCode.toFile(qrcode, code, {
+            type: 'svg',
+            errorCorrectionLevel: 'H',
+         });
          await model.createUser(
             chatId,
             'uz',
