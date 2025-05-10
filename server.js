@@ -61,8 +61,59 @@ bot.onText(/\/start/, async msg => {
    const foundUser = await model.foundUser(chatId)
 
    if (foundUser) {
-      if (foundUser.bot_step == "") {
-
+      if (foundUser.bot_step == "register") {
+         if (foundUser.bot_lang == 'uz') {
+            bot.sendMessage(chatId, localText.startTextUz, {
+               parse_mode: "HTML",
+               reply_markup: {
+                  keyboard: [
+                     [
+                        {
+                           text: localText.sendContactBtnUz,
+                           request_contact: true
+                        }
+                     ]
+                  ],
+                  resize_keyboard: true
+               }
+            })
+         } else if (foundUser.bot_lang == 'ru') {
+            bot.sendMessage(chatId, localText.successfullyRegisterUz, {
+               parse_mode: "HTML",
+               reply_markup: {
+                  inline_keyboard: [
+                     [
+                        {
+                           text: localText.seeConditionsBtnUz,
+                           callback_data: "see_conditions"
+                        }
+                     ],
+                     [
+                        {
+                           text: localText.agreeConditionsBtnUz,
+                           callback_data: "agree_conditions"
+                        }
+                     ]
+                  ]
+               }
+            })
+         }
+      } else if (foundUser.bot_step == "ask_name") {
+         if (foundUser.bot_lang == 'uz') {
+            bot.sendMessage(chatId, localText.askNameTextUz, {
+               parse_mode: "HTML",
+               reply_markup: {
+                  remove_keyboard: true
+               }
+            })
+         } else if (foundUser.bot_lang == 'ru') {
+            bot.sendMessage(chatId, localText.askNameTextRu, {
+               parse_mode: "HTML",
+               reply_markup: {
+                  remove_keyboard: true
+               }
+            })
+         }
       } else if (foundUser.bot_lang == 'uz') {
          bot.sendMessage(chatId, localText.menuTextUz, {
             parse_mode: "HTML",
