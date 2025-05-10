@@ -155,7 +155,7 @@ bot.on('message', async msg => {
    const text = msg.text;
    const foundUser = await model.foundUser(chatId)
 
-   if (foundUser.bot_step == 'change_lang') {
+   if (foundUser && foundUser?.bot_step == 'change_lang') {
       if (text == '🇺🇿 Uz') {
          bot.sendMessage(chatId, localText.menuTextUz, {
             parse_mode: "HTML",
