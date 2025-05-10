@@ -545,72 +545,84 @@ bot.on("callback_query", async msg => {
 
    } else if (data == "agree_conditions") {
       if (foundUser.bot_lang == 'uz') {
-         bot.sendMessage(chatId, localText.menuTextUz, {
+         const caption = localText.balanceTextUz.replace(/%balance%/g, foundUser.balance.toLocaleString('en-US'))
+         bot.sendPhoto(chatId, `./public/images/${foundUser.qrcode_image}`, {
             parse_mode: "HTML",
-            reply_markup: {
-               keyboard: [
-                  [
-                     {
-                        text: localText.balanceBtnUz
-                     }
-                  ],
-                  [
-                     {
-                        text: localText.historiesBtnUz
-                     }
-                  ],
-                  [
-                     {
-                        text: localText.addressBtnUz
-                     },
-                     {
-                        text: localText.nearAddressBtnUz
-                     },
-                  ],
-                  [
-                     {
-                        text: localText.changeLangBtnUz
-                     },
-                  ]
-               ],
-               resize_keyboard: true
-            }
+            caption: caption
          }).then(async () => {
-            await model.editStep(chatId, 'menu')
+            bot.sendMessage(chatId, localText.menuTextUz, {
+               parse_mode: "HTML",
+               reply_markup: {
+                  keyboard: [
+                     [
+                        {
+                           text: localText.balanceBtnUz
+                        }
+                     ],
+                     [
+                        {
+                           text: localText.historiesBtnUz
+                        }
+                     ],
+                     [
+                        {
+                           text: localText.addressBtnUz
+                        },
+                        {
+                           text: localText.nearAddressBtnUz
+                        },
+                     ],
+                     [
+                        {
+                           text: localText.changeLangBtnUz
+                        },
+                     ]
+                  ],
+                  resize_keyboard: true
+               }
+            }).then(async () => {
+               await model.editStep(chatId, 'menu')
+            })
          })
       } else if (foundUser.bot_lang == 'ru') {
-         bot.sendMessage(chatId, localText.menuTextRu, {
+         const caption = localText.balanceTextRu.replace(/%balance%/g, foundUser.balance.toLocaleString('en-US'))
+         bot.sendPhoto(chatId, `./public/images/${foundUser.qrcode_image}`, {
             parse_mode: "HTML",
-            reply_markup: {
-               keyboard: [
-                  [
-                     {
-                        text: localText.balanceBtnRu
-                     }
-                  ],
-                  [
-                     {
-                        text: localText.historiesBtnRu
-                     }
-                  ],
-                  [
-                     {
-                        text: localText.addressBtnRu
-                     },
-                     {
-                        text: localText.nearAddressBtnRu
-                     },
-                  ],
-                  [
-                     {
-                        text: localText.changeLangBtnRu
-                     },
-                  ]
-               ],
-               resize_keyboard: true
-            }
+            caption: caption
          }).then(async () => {
-            await model.editStep(chatId, 'menu')
+            bot.sendMessage(chatId, localText.menuTextRu, {
+               parse_mode: "HTML",
+               reply_markup: {
+                  keyboard: [
+                     [
+                        {
+                           text: localText.balanceBtnRu
+                        }
+                     ],
+                     [
+                        {
+                           text: localText.historiesBtnRu
+                        }
+                     ],
+                     [
+                        {
+                           text: localText.addressBtnRu
+                        },
+                        {
+                           text: localText.nearAddressBtnRu
+                        },
+                     ],
+                     [
+                        {
+                           text: localText.changeLangBtnRu
+                        },
+                     ]
+                  ],
+                  resize_keyboard: true
+               }
+            }).then(async () => {
+               await model.editStep(chatId, 'menu')
+            })
          })
       }
    } else if (data.startsWith("page_")) {
