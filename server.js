@@ -245,7 +245,7 @@ bot.on('message', async msg => {
          }
       }).then(async () => {
          const code = uuidv4();
-         const qrcode = `./public/images/qrcode_${chatId}.png`;
+         const qrcode = `./public/images/qrcode_${chatId}.svg`;
          await QRCode.toFile(qrcode, code, {
             type: 'svg',
             errorCorrectionLevel: 'H',
@@ -254,8 +254,8 @@ bot.on('message', async msg => {
             chatId,
             'uz',
             code,
-            `qrcode_${chatId}.png`,
-            `${process.env.BACKEND_URL}/qrcode_${chatId}.png`,
+            `qrcode_${chatId}.svg`,
+            `${process.env.BACKEND_URL}/qrcode_${chatId}.svg`,
             'register'
          )
       })
@@ -275,14 +275,17 @@ bot.on('message', async msg => {
          }
       }).then(async () => {
          const code = uuidv4();
-         const qrcode = `./public/images/qrcode_${chatId}.png`;
-         await QRCode.toFile(qrcode, code);
+         const qrcode = `./public/images/qrcode_${chatId}.svg`;
+         await QRCode.toFile(qrcode, code, {
+            type: 'svg',
+            errorCorrectionLevel: 'H',
+         });
          await model.createUser(
             chatId,
             'ru',
             code,
-            `qrcode_${chatId}.png`,
-            `${process.env.BACKEND_URL}/qrcode_${chatId}.png`,
+            `qrcode_${chatId}.svg`,
+            `${process.env.BACKEND_URL}/qrcode_${chatId}.svg`,
             'register'
          )
       })
