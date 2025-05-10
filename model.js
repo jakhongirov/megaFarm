@@ -110,7 +110,8 @@ const branches = (lang) => {
          address_${lang} as address,
          landmark_${lang} as landmark,
          address_link,
-         image_name
+         image_name,
+         image_url
       FROM
          branches
       ORDER BY
@@ -179,6 +180,7 @@ const foundnearBranch = (userLatitude, userLongitude, lang) => {
          landmark_${lang} as landmark,
          address_link,
          image_name,
+         image_url,
          (6371 * acos(
             cos(radians($1)) * cos(radians(latitude)) * 
             cos(radians(longitude) - radians($2)) + 

@@ -343,13 +343,13 @@ bot.on('message', async msg => {
       }
    } else if (text == localText.balanceBtnUz) {
       const caption = localText.balanceTextUz.replace(/%balance%/g, foundUser.balance.toLocaleString('en-US'))
-      bot.sendPhoto(chatId, `./public/images/${foundUser.qrcode_image}`, {
+      bot.sendPhoto(chatId, foundUser.qrcode_image_url, {
          parse_mode: "HTML",
          caption: caption
       })
    } else if (text == localText.balanceBtnRu) {
       const caption = localText.balanceTextRu.replace(/%balance%/g, foundUser.balance.toLocaleString('en-US'))
-      bot.sendPhoto(chatId, `./public/images/${foundUser.qrcode_image}`, {
+      bot.sendPhoto(chatId, foundUser.qrcode_image_url, {
          parse_mode: "HTML",
          caption: caption
       })
@@ -387,7 +387,7 @@ bot.on('message', async msg => {
             .replace(/%map%/g, b.address_link);
 
          setTimeout(() => {
-            bot.sendPhoto(chatId, `./public/images/${b.image_name}`, {
+            bot.sendPhoto(chatId, b.image_url, {
                parse_mode: "HTML",
                caption: text
             })
@@ -407,7 +407,7 @@ bot.on('message', async msg => {
             .replace(/%map%/g, b.address_link);
 
          setTimeout(() => {
-            bot.sendPhoto(chatId, `./public/images/${b.image_name}`, {
+            bot.sendPhoto(chatId, b.image_url, {
                parse_mode: "HTML",
                caption: text
             })
@@ -556,7 +556,7 @@ bot.on("callback_query", async msg => {
    } else if (data == "agree_conditions") {
       if (foundUser.bot_lang == 'uz') {
          const caption = localText.balanceTextUz.replace(/%balance%/g, foundUser.balance.toLocaleString('en-US'))
-         bot.sendPhoto(chatId, `./public/images/${foundUser.qrcode_image}`, {
+         bot.sendPhoto(chatId, foundUser.qrcode_image_url, {
             parse_mode: "HTML",
             caption: caption
          }).then(async () => {
@@ -596,7 +596,7 @@ bot.on("callback_query", async msg => {
          })
       } else if (foundUser.bot_lang == 'ru') {
          const caption = localText.balanceTextRu.replace(/%balance%/g, foundUser.balance.toLocaleString('en-US'))
-         bot.sendPhoto(chatId, `./public/images/${foundUser.qrcode_image}`, {
+         bot.sendPhoto(chatId, foundUser.qrcode_image_url, {
             parse_mode: "HTML",
             caption: caption
          }).then(async () => {
@@ -685,7 +685,7 @@ bot.on('location', async msg => {
          .replace(/%landmark%/g, foundnearBranch.landmark)
          .replace(/%map%/g, foundnearBranch.address_link);
 
-      bot.sendPhoto(chatId, `./public/images/${foundnearBranch.image_name}`, {
+      bot.sendPhoto(chatId, foundnearBranch.image_url, {
          parse_mode: "HTML",
          caption: text,
          reply_markup: {
@@ -729,7 +729,7 @@ bot.on('location', async msg => {
          .replace(/%landmark%/g, foundnearBranch.landmark)
          .replace(/%map%/g, foundnearBranch.address_link);
 
-      bot.sendPhoto(chatId, `./public/images/${foundnearBranch.image_name}`, {
+      bot.sendPhoto(chatId, foundnearBranch.image_url, {
          parse_mode: "HTML",
          caption: text,
          reply_markup: {
