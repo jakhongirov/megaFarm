@@ -1,5 +1,7 @@
 const model = require('./model')
 const JWT = require('../../lib/jwt')
+const path = require('path')
+const FS = require('../../lib/fs/fs')
 
 module.exports = {
    GET_LIST: async (req, res) => {
@@ -174,6 +176,12 @@ module.exports = {
          const deleteUser = await model.deleteUser(id)
 
          if (deleteUser) {
+
+            if (deleteUser?.qrcode_image) {
+               const deleteOldAvatar = new FS(path.resolve(__dirname, '..', '..', '..', 'public', 'images', `${deleteUser?.qrcode_image}`))
+               deleteOldAvatar.delete()
+            }
+
             return res.status(200).json({
                status: 200,
                message: "Success"
